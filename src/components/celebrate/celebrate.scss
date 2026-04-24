@@ -1,71 +1,140 @@
 h1.celebrate-title {
-  font-size: 2.8rem;
-  color: #d63384;
-  font-weight: 900;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
-  animation: celebrate-bounce-title 0.6s ease infinite alternate;
+	font-size: 2.8rem;
+	color: #d63384;
+	font-weight: 900;
+	margin-bottom: 20px;
+	text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+	animation: celebrate-bounce-title 0.6s ease infinite alternate;
 }
 
 @keyframes celebrate-bounce-title {
-  from {
-    transform: translateY(0) rotate(-1deg);
-  }
-  to {
-    transform: translateY(-12px) rotate(1deg);
-  }
+	from {
+		transform: translateY(0) rotate(-1deg);
+	}
+	to {
+		transform: translateY(-12px) rotate(1deg);
+	}
 }
 
 .message-group {
-  position: absolute;
-  width: 100%;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+	position: absolute;
+	width: 100%;
+	transition:
+		opacity 0.8s ease,
+		transform 0.8s ease;
 }
 
 /* hidden state */
 .message-group.hide {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
+	opacity: 0;
+	transform: translateY(20px);
+	pointer-events: none;
 }
 
 /* visible state */
 .message-group.show {
-  opacity: 1;
-  transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
 }
 
 /* text */
 .yes-message {
-  font-size: 1.4rem;
-  color: #e91e8c;
-  font-weight: 700;
-  margin-top: 8px;
+	font-size: 1.4rem;
+	color: #e91e8c;
+	font-weight: 700;
+	margin-top: 8px;
 
-  opacity: 0;
-  transform: translateY(10px);
+	opacity: 0;
+	transform: translateY(10px);
 }
 
 /* animate per line */
 .message-group.show .yes-message {
-  animation: fadeUp 0.8s forwards;
+	animation: fadeUp 0.8s forwards;
 }
 
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.6s; }
+.delay-1 {
+	animation-delay: 0.2s;
+}
+.delay-2 {
+	animation-delay: 0.6s;
+}
 
 @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .gif-container {
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 
-  & > #cat-gif {
-    width: 260px;
-    height: 260px;
-  }
+	& > #cat-gif {
+		width: 260px;
+		height: 260px;
+	}
+}
+
+/* ================= SIDE PHOTOS (NON-INTRUSIVE) ================= */
+
+.side-photos {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1;
+
+	display: flex;
+	flex-direction: column;
+	gap: 60px;
+
+	// pointer-events: none; // biar tidak ganggu klik
+}
+
+/* posisi kiri */
+.side-photos.left {
+	left: 20%;
+	align-items: flex-end;
+}
+
+/* posisi kanan */
+.side-photos.right {
+	right: 20%;
+	align-items: flex-start;
+}
+
+/* photo style */
+.photo-card {
+	width: 180px;
+	aspect-ratio: 4/5;
+	object-fit: cover;
+
+	border-radius: 16px;
+	padding: 6px;
+	background: white;
+
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+	opacity: 0.9;
+
+	transition: transform 0.3s ease;
+}
+
+/* rotation aesthetic */
+.rotate-1 {
+	transform: rotate(-8deg);
+}
+.rotate-2 {
+	transform: rotate(6deg);
+}
+.rotate-3 {
+	transform: rotate(10deg);
+}
+.rotate-4 {
+	transform: rotate(-6deg);
+}
+
+/* optional hover (kalau mau aktifkan klik, hapus pointer-events:none) */
+.photo-card:hover {
+	transform: scale(1.05);
 }
