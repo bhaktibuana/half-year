@@ -1,8 +1,0 @@
-{
-	"login": "Login",
-	"input_required": "{{name}} is required",
-	"input_format_email": "Invalid email format",
-	"refresh_update_version_title": "New Version Available",
-	"refresh_update_version_message": "This app has a new version. Please reload to get the update.",
-	"refresh_update_version_button": "Refresh Now"
-}
