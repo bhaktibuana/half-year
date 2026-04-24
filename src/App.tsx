@@ -6,6 +6,13 @@ import Celebrate from '@/components/celebrate/Celebrate';
 
 import { themeSong } from '@/assets/sounds';
 
+import {
+	PhotoCard1,
+	PhotoCard2,
+	PhotoCard3,
+	PhotoCard4,
+} from '@/assets/images';
+
 import '@/app.scss';
 
 const App = () => {
@@ -71,7 +78,16 @@ const App = () => {
 					{step === 2 && <Questions setStep={setStep} />}
 
 					{/* Step 3 */}
-					{step === 3 && <Celebrate />}
+					{step === 3 && (
+						<Celebrate
+							photoCards={[
+								PhotoCard1,
+								PhotoCard2,
+								PhotoCard3,
+								PhotoCard4,
+							]}
+						/>
+					)}
 				</div>
 
 				{/* 🎵 Audio */}

@@ -114,27 +114,51 @@ h1.celebrate-title {
 	background: white;
 
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-
 	opacity: 0.9;
 
-	transition: transform 0.3s ease;
+	filter: blur(10px);
+
+	transition: all 0.5s ease;
 }
 
 /* rotation aesthetic */
 .rotate-1 {
-	transform: rotate(-8deg);
-}
-.rotate-2 {
-	transform: rotate(6deg);
-}
-.rotate-3 {
-	transform: rotate(10deg);
-}
-.rotate-4 {
-	transform: rotate(-6deg);
+	transform: rotate(-8deg) scale(1.05);
+
+	&.loaded {
+		filter: blur(0);
+		transform: rotate(-8deg) scale(1);
+	}
 }
 
-/* optional hover (kalau mau aktifkan klik, hapus pointer-events:none) */
+.rotate-2 {
+	transform: rotate(6deg) scale(1.05);
+
+	&.loaded {
+		filter: blur(0);
+		transform: rotate(6deg) scale(1);
+	}
+}
+
+.rotate-3 {
+	transform: rotate(10deg) scale(1.05);
+
+	&.loaded {
+		filter: blur(0);
+		transform: rotate(10deg) scale(1);
+	}
+}
+
+.rotate-4 {
+	transform: rotate(-6deg) scale(1.05);
+
+	&.loaded {
+		filter: blur(0);
+		transform: rotate(-6deg) scale(1);
+	}
+}
+
+/* hover tetap jalan */
 .photo-card:hover {
 	transform: scale(1.05);
 }

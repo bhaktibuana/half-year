@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import { Celebrate1, PhotoCard1, PhotoCard2, PhotoCard3, PhotoCard4 } from '@/assets/images';
+import { Celebrate1 } from '@/assets/images';
 
 import '@/components/celebrate/celebrate.scss';
 
-const Celebrate = () => {
+type CelebrateProps = {
+	photoCards: string[];
+};
+
+const Celebrate: React.FC<CelebrateProps> = ({ photoCards }) => {
 	const [phase, setPhase] = useState(1);
 
 	useEffect(() => {
@@ -19,8 +23,19 @@ const Celebrate = () => {
 		<div className="celebrate-wrapper">
 			{/* LEFT PHOTOS */}
 			<div className="side-photos left">
-				<img src={PhotoCard1} className="photo-card rotate-1" />
-				<img src={PhotoCard2} className="photo-card rotate-2" />
+				<img
+					src={photoCards[0]}
+					className="photo-card rotate-1"
+					loading="lazy"
+					onLoad={(e) => e.currentTarget.classList.add('loaded')}
+				/>
+
+				<img
+					src={photoCards[1]}
+					className="photo-card rotate-2"
+					loading="lazy"
+					onLoad={(e) => e.currentTarget.classList.add('loaded')}
+				/>
 			</div>
 
 			{/* MAIN CONTENT */}
@@ -59,8 +74,19 @@ const Celebrate = () => {
 
 			{/* RIGHT PHOTOS */}
 			<div className="side-photos right">
-				<img src={PhotoCard3} className="photo-card rotate-3" />
-				<img src={PhotoCard4} className="photo-card rotate-4" />
+				<img
+					src={photoCards[2]}
+					className="photo-card rotate-3"
+					loading="lazy"
+					onLoad={(e) => e.currentTarget.classList.add('loaded')}
+				/>
+
+				<img
+					src={photoCards[3]}
+					className="photo-card rotate-4"
+					loading="lazy"
+					onLoad={(e) => e.currentTarget.classList.add('loaded')}
+				/>
 			</div>
 		</div>
 	);
