@@ -1,45 +1,71 @@
 h1.celebrate-title {
-	font-size: 2.8rem;
-	color: #d63384;
-	font-weight: 900;
-	margin-bottom: 20px;
-	text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
-	animation: celebrate-bounce-title 0.6s ease infinite alternate;
+  font-size: 2.8rem;
+  color: #d63384;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+  animation: celebrate-bounce-title 0.6s ease infinite alternate;
 }
 
 @keyframes celebrate-bounce-title {
-	from {
-		transform: translateY(0) rotate(-1deg);
-	}
-	to {
-		transform: translateY(-12px) rotate(1deg);
-	}
+  from {
+    transform: translateY(0) rotate(-1deg);
+  }
+  to {
+    transform: translateY(-12px) rotate(1deg);
+  }
 }
 
-p.yes-message {
-	font-size: 1.4rem;
-	color: #e91e8c;
-	font-weight: 700;
-	margin-top: 8px;
-	animation: yes-message-fade-in 1s ease 0.5s both;
+.message-group {
+  position: absolute;
+  width: 100%;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-@keyframes yes-message-fade-in {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+/* hidden state */
+.message-group.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+/* visible state */
+.message-group.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* text */
+.yes-message {
+  font-size: 1.4rem;
+  color: #e91e8c;
+  font-weight: 700;
+  margin-top: 8px;
+
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* animate per line */
+.message-group.show .yes-message {
+  animation: fadeUp 0.8s forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .gif-container {
-	margin-bottom: 60px;
+  margin-bottom: 60px;
 
-	& > #cat-gif {
-		width: 260px;
-		height: 260px;
-	}
+  & > #cat-gif {
+    width: 260px;
+    height: 260px;
+  }
 }
