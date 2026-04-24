@@ -1,0 +1,39 @@
+name: cd
+
+on:
+    workflow_run:
+        workflows: ['ci']
+        types:
+            - completed
+
+jobs:
+    cd:
+        if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Deploy to Production Server
+              if: github.event.workflow_run.head_branch == 'main' || github.event.workflow_run.head_branch == 'staging'
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USERNAME }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  passphrase: ${{ secrets.SSH_PASSPHRASE }}
+                  port: 22
+                  script: |
+                      # Pull the latest Production Docker image
+                      docker pull ${{ secrets.DOCKER_USERNAME }}/half-year:latest
+
+                      # Navigate to the application directory
+                      cd ~/app/half-year
+                      git pull origin main
+
+                      # Restart the Docker container with the new image
+                      docker-compose -f docker/docker-compose.prod.yml up -d --force-recreate
+
+                      # Clean up unused Docker resources
+                      docker system prune -a -f

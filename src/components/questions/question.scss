@@ -1,0 +1,107 @@
+h1.question-title {
+	font-size: 2.4rem;
+	color: #d63384;
+	font-weight: 900;
+	margin-bottom: 20px;
+	text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+	animation: question-title-wiggle 2s ease-in-out infinite;
+}
+
+@keyframes question-title-wiggle {
+	0%,
+	100% {
+		transform: rotate(-1deg);
+	}
+	50% {
+		transform: rotate(1deg);
+	}
+}
+
+.question-gif-container {
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+}
+
+img.cat-gif {
+	width: 200px;
+	height: 200px;
+	object-fit: contain;
+	filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+	transition: opacity 0.3s ease;
+}
+
+.question-buttons {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+	flex-wrap: wrap;
+
+	& > button#yes-btn {
+		background: linear-gradient(135deg, #4caf50, #45a049);
+		color: white;
+		border: none;
+		border-radius: 16px;
+		font-size: 1.6rem;
+		font-weight: 900;
+		font-family: 'Nunito', sans-serif;
+		padding: 18px 45px;
+		cursor: pointer;
+		transition:
+			transform 0.15s,
+			box-shadow 0.15s;
+		box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
+		letter-spacing: 1px;
+
+		&:hover {
+			transform: scale(1.06) translateY(-2px);
+			box-shadow: 0 10px 28px rgba(76, 175, 80, 0.55);
+		}
+
+		&:active {
+			transform: scale(0.98);
+		}
+	}
+
+	& > button#no-btn {
+		background: linear-gradient(135deg, #e74c3c, #c0392b);
+		color: white;
+		border: none;
+		border-radius: 12px;
+		font-size: 1rem;
+		font-weight: 700;
+		font-family: 'Nunito', sans-serif;
+		padding: 12px 28px;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			left 0.25s ease,
+			top 0.25s ease;
+		box-shadow: 0 4px 14px rgba(231, 76, 60, 0.4);
+
+		&:hover {
+			background: linear-gradient(135deg, #c0392b, #a93226);
+		}
+	}
+}
+
+#tease-toast {
+	margin-top: 14px;
+	font-size: 1rem;
+	color: #d63384;
+	font-weight: 700;
+	font-style: italic;
+	opacity: 0;
+	transform: translateY(6px);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+	min-height: 1.5rem;
+
+	&.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"login": "Masuk",
+	"input_required": "{{name}} wajib diisi",
+	"input_format_email": "Format email tidak valid",
+	"refresh_update_version_title": "Versi Terbaru Tersedia",
+	"refresh_update_version_message": "Aplikasi ini memiliki versi terbaru. Silakan muat ulang untuk mendapatkan pembaruan.",
+	"refresh_update_version_button": "Refresh Sekarang"
+}

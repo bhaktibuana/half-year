@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+    half-year:
+        image: bhaktibuana/half-year:latest
+        container_name: half-year
+        ports:
+            - '3015:80'

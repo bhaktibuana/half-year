@@ -1,0 +1,33 @@
+._page-container {
+	width: 100%;
+	max-width: 100vw;
+	height: auto;
+	min-height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-background-001);
+	color: var(--color-text-001);
+}
+
+._auth-page-container {
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+	max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin-top: 3rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+._private-page-container {
+	width: 100%;
+	max-width: 100vw;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
