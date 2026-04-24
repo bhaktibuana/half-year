@@ -3,7 +3,9 @@ h1.greetings-title {
 	color: #d63384;
 	font-weight: 900;
 	margin-bottom: 20px;
+
 	text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+
 	animation: greetings-title-wiggle 2s ease-in-out infinite;
 }
 
@@ -20,26 +22,35 @@ h1.greetings-title {
 button.greeting-button {
 	background: linear-gradient(135deg, #e74ead, #cc1987);
 	color: white;
+
 	border: none;
 	border-radius: 16px;
+
 	font-size: 1rem;
 	font-weight: 900;
 	font-family: 'Nunito', sans-serif;
+
 	padding: 18px 45px;
-	cursor: pointer;
-	transition:
-		transform 0.15s,
-		box-shadow 0.15s;
-	box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
-	letter-spacing: 1px;
 	margin-top: 50px;
 
-	&:hover {
-		transform: scale(1.06) translateY(-2px);
-		box-shadow: 0 10px 28px rgba(76, 175, 80, 0.55);
-	}
+	cursor: pointer;
 
-	&:active {
-		transform: scale(0.98);
-	}
+	letter-spacing: 1px;
+
+	/* fix transition */
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.15s ease;
+
+	/* fix shadow biar match warna */
+	box-shadow: 0 6px 20px rgba(231, 78, 173, 0.45);
+}
+
+button.greeting-button:hover {
+	transform: scale(1.06) translateY(-2px);
+	box-shadow: 0 10px 28px rgba(231, 78, 173, 0.55);
+}
+
+button.greeting-button:active {
+	transform: scale(0.98);
 }

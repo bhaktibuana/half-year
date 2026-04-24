@@ -1,9 +1,13 @@
+/* ================= TITLE ================= */
+
 h1.celebrate-title {
 	font-size: 2.8rem;
 	color: #d63384;
 	font-weight: 900;
 	margin-bottom: 20px;
+
 	text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
+
 	animation: celebrate-bounce-title 0.6s ease infinite alternate;
 }
 
@@ -16,28 +20,29 @@ h1.celebrate-title {
 	}
 }
 
+/* ================= MESSAGE ================= */
+
 .message-group {
 	position: absolute;
 	width: 100%;
+
 	transition:
 		opacity 0.8s ease,
 		transform 0.8s ease;
 }
 
-/* hidden state */
 .message-group.hide {
 	opacity: 0;
 	transform: translateY(20px);
 	pointer-events: none;
 }
 
-/* visible state */
 .message-group.show {
 	opacity: 1;
 	transform: translateY(0);
 }
 
-/* text */
+/* TEXT */
 .yes-message {
 	font-size: 1.4rem;
 	color: #e91e8c;
@@ -59,24 +64,33 @@ h1.celebrate-title {
 .delay-2 {
 	animation-delay: 0.6s;
 }
+.delay-3 {
+	animation-delay: 1s;
+}
 
 @keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 	to {
 		opacity: 1;
 		transform: translateY(0);
 	}
 }
 
+/* ================= GIF ================= */
+
 .gif-container {
 	margin-bottom: 60px;
-
-	& > #cat-gif {
-		width: 260px;
-		height: 260px;
-	}
 }
 
-/* ================= SIDE PHOTOS (NON-INTRUSIVE) ================= */
+#cat-gif {
+	width: 260px;
+	height: 260px;
+}
+
+/* ================= SIDE PHOTOS ================= */
 
 .side-photos {
 	position: fixed;
@@ -88,7 +102,7 @@ h1.celebrate-title {
 	flex-direction: column;
 	gap: 60px;
 
-	// pointer-events: none; // biar tidak ganggu klik
+	// pointer-events: none;
 }
 
 /* posisi kiri */
@@ -103,10 +117,13 @@ h1.celebrate-title {
 	align-items: flex-start;
 }
 
-/* photo style */
+/* ================= PHOTO CARD ================= */
+
 .photo-card {
 	width: 180px;
+	height: 225px; /* fallback */
 	aspect-ratio: 4/5;
+
 	object-fit: cover;
 
 	border-radius: 16px;
@@ -114,50 +131,39 @@ h1.celebrate-title {
 	background: white;
 
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
 	opacity: 0.9;
 
 	filter: blur(10px);
 
-	transition: all 0.5s ease;
+	transition:
+		transform 0.5s ease,
+		filter 0.5s ease;
+
+	will-change: transform, filter;
 }
 
-/* rotation aesthetic */
+/* ================= ROTATION ================= */
+
 .rotate-1 {
 	transform: rotate(-8deg) scale(1.05);
-
-	&.loaded {
-		filter: blur(0);
-		transform: rotate(-8deg) scale(1);
-	}
 }
-
 .rotate-2 {
 	transform: rotate(6deg) scale(1.05);
-
-	&.loaded {
-		filter: blur(0);
-		transform: rotate(6deg) scale(1);
-	}
 }
-
 .rotate-3 {
 	transform: rotate(10deg) scale(1.05);
-
-	&.loaded {
-		filter: blur(0);
-		transform: rotate(10deg) scale(1);
-	}
 }
-
 .rotate-4 {
 	transform: rotate(-6deg) scale(1.05);
-
-	&.loaded {
-		filter: blur(0);
-		transform: rotate(-6deg) scale(1);
-	}
 }
 
+/* loaded state (blur hilang) */
+.photo-card.loaded {
+	filter: blur(0);
+}
+
+/* ================= HOVER FIX ================= */
 /* hover tetap jalan */
 .photo-card:hover {
 	transform: scale(1.05);
